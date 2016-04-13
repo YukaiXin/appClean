@@ -23,8 +23,6 @@ public class AppManagerAdapter extends BaseAdapter {
     private LayoutInflater mInflater;
     private List<AppInfo> appInfos;
 
-
-
     //动态改变appInfos
     public void setAppInfos(List<AppInfo> appInfos){
 
@@ -39,17 +37,17 @@ public class AppManagerAdapter extends BaseAdapter {
     }
     @Override
     public int getCount() {
-        return 0;
+        return appInfos.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return null;
+        return appInfos.get(i);
     }
 
     @Override
     public long getItemId(int i) {
-        return 0;
+        return i;
     }
 
     @Override

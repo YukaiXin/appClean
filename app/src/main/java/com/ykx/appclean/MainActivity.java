@@ -1,12 +1,14 @@
 package com.ykx.appclean;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.widget.PopupWindowCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.ArrayAdapter;
@@ -53,22 +55,19 @@ public class MainActivity extends Activity {
 
                 case SUCCESS_GET_APPLICATION:
 
-                    adapter = new AppManagerAdapter(getApplicationContext(), appInfos);
+                    adapter = new AppManagerAdapter(getApplicationContext(),appInfos);
 
                     mLv.setAdapter(adapter);
+
                     break;
 
                 default:
                     break;
             }
-
-
         }
 
 
     };
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +95,7 @@ public class MainActivity extends Activity {
                 for(AppInfo appInfo:appInfos){
                     if(appInfo.getIsApp())
                     {
+                        Log.i("ykx","appInfo");
                         userAppInfos.add(appInfo);
                     }
 
@@ -107,8 +107,4 @@ public class MainActivity extends Activity {
 
         }.start();
     }
-
-
-
-
 }
