@@ -59,6 +59,7 @@ public class AppInfo {
         this.appName = str;
     }
 
+
     public String getAppVersion()
     {
         return this.appVersion;
@@ -68,6 +69,9 @@ public class AppInfo {
     {
         this.appVersion = str;
     }
+
+    public String getPackageName(){return appPackageName;}
+    public void  setAppPackageName(String packageName){this.appPackageName = packageName;}
 
     public Boolean getIsApp()
     {

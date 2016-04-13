@@ -55,9 +55,11 @@ public class MainActivity extends Activity {
 
                     adapter = new AppManagerAdapter(getApplicationContext(), appInfos);
 
-
+                    mLv.setAdapter(adapter);
                     break;
 
+                default:
+                    break;
             }
 
 
@@ -68,16 +70,11 @@ public class MainActivity extends Activity {
 
 
 
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mBtn = (Button) findViewById(R.id.button);
         mLv = (ListView) findViewById(R.id.listView);
         //实例化AppInfoService对象
         mAppInfoService = new AppInfoService(this);
@@ -88,7 +85,11 @@ public class MainActivity extends Activity {
 
             public void run(){
 
-                appInfos = mAppInfoService.getAppInfos();
+                try {
+                    appInfos = mAppInfoService.getAppInfos();
+                } catch (PackageManager.NameNotFoundException e) {
+                    e.printStackTrace();
+                }
 
                 userAppInfos = new ArrayList<AppInfo>();
 

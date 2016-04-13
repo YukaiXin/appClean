@@ -2,6 +2,7 @@ package com.ykx.appclean;
 
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 
@@ -16,7 +17,7 @@ public class AppInfoService {
 
     private Context mContext;
     private PackageManager pm;
-    public List<AppInfo> getAppInfos(){
+    public List<AppInfo> getAppInfos() throws PackageManager.NameNotFoundException {
 
         List<AppInfo> appInfos = new ArrayList<AppInfo>();
 
@@ -33,6 +34,11 @@ public class AppInfoService {
             appInfo.setAppName(app_name);
             //app 应用包名
             String app_pakeagename = info.packageName;
+            appInfo.setAppPackageName(app_pakeagename);
+            //app版本号
+            PackageInfo packageInfo = pm.getPackageInfo(app_pakeagename,0);
+            String app_Version = packageInfo.versionName;
+            appInfo.setAppVersion(app_Version);
 
             boolean isUserApp = filterApp(info);
             appInfo.setIsUserApp(isUserApp);

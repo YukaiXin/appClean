@@ -66,6 +66,13 @@ public class AppManagerAdapter extends BaseAdapter {
         ImageView iv_appicon = (ImageView)view.findViewById(R.id.imageView);
         TextView  tv_appname = (TextView)view.findViewById(R.id.textView);
         TextView  tv_appversion = (TextView) view.findViewById(R.id.textView2);
+
+        AppInfo appInfo = appInfos.get(i);
+
+        iv_appicon.setImageDrawable(appInfo.getAppIcon());
+        tv_appname.setText(appInfo.getAppName());
+        tv_appversion.setText(appInfo.getAppVersion());
+
         return view;
     }
 }
